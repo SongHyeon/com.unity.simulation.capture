@@ -1,4 +1,4 @@
-﻿Shader "usim/BlitCopyDepth"
+Shader "usim/BlitCopyDepth"
 {
     SubShader
     {
@@ -35,7 +35,7 @@
             float frag(v2f i) : COLOR
             {
                 float d = SAMPLE_DEPTH_TEXTURE(_CameraDepthTexture, i.uv);
-                d = Linear01Depth(d);
+                d = LinearEyeDepth(d); // Channel Grab : Image Format Raw, Format R32_S Float
                 return d;
             }
 #endif
@@ -43,7 +43,7 @@
             float2 frag(v2f i) : COLOR
             {
                 float d = SAMPLE_DEPTH_TEXTURE(_CameraDepthTexture, i.uv);
-                d = Linear01Depth(d);
+                d = LinearEyeDepth(d); // Channel Grab : Image Format Raw, Format R32_S Float
                 return float2(d, d);
             }
 #endif
@@ -51,7 +51,7 @@
             float3 frag(v2f i) : COLOR
             {
                 float d = SAMPLE_DEPTH_TEXTURE(_CameraDepthTexture, i.uv);
-                d = Linear01Depth(d);
+                d = LinearEyeDepth(d); // Channel Grab : Image Format Raw, Format R32_S Float
                 return float3(d, d, d);
             }
 #endif
@@ -59,7 +59,7 @@
             float4 frag(v2f i) : COLOR
             {
                 float d = SAMPLE_DEPTH_TEXTURE(_CameraDepthTexture, i.uv);
-                d = Linear01Depth(d);
+                d = LinearEyeDepth(d); // Channel Grab : Image Format Raw, Format R32_S Float
                 return float4(d, d, d, 1);
             }
 #endif
